@@ -105,5 +105,5 @@ dist/bundle.js.map
 .tern-port
 
 server/spotify/config.js
+server/db/config.js
 client/dist/
-server/db/schemas/config.js
