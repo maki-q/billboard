@@ -15,9 +15,7 @@
  *  and visit <http://localhost:8888/login> in your Browser.
  */
 const express = require('express');
-const SpotifyWebApi = require('spotify-web-api-node');
-
-const { CLIENT_ID, CLIENT_SECRET } = require('./spotify/config.js');
+const spotifyApi = require('./spotify');
 
 const scopes = [
   'ugc-image-upload',
@@ -40,12 +38,6 @@ const scopes = [
   'user-follow-read',
   'user-follow-modify',
 ];
-
-const spotifyApi = new SpotifyWebApi({
-  redirectUri: 'http://localhost:3000/callback',
-  clientId: CLIENT_ID,
-  clientSecret: CLIENT_SECRET,
-});
 
 const app = express();
 
