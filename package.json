@@ -1,0 +1,47 @@
+{
+  "name": "billboard-list",
+  "version": "1.0.0",
+  "description": "An app for viewing and saving the billboard top 100 hits.",
+  "main": "index.js",
+  "scripts": {
+    "react-dev": "webpack --config ./webpack.config.js -w",
+    "start": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maki-q/billboard.git"
+  },
+  "author": "Quinton Maki",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/maki-q/billboard/issues"
+  },
+  "homepage": "https://github.com/maki-q/billboard#readme",
+  "dependencies": {
+    "axios": "^0.25.0",
+    "billboard-top-100": "^2.5.9",
+    "express": "^4.17.2",
+    "pg": "^8.7.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "styled-components": "^5.3.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.12",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
+    "babel-loader": "^8.2.3",
+    "eslint": "^8.7.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "nodemon": "^2.0.15",
+    "prettier": "^2.5.1",
+    "prettier-eslint": "^13.0.0",
+    "webpack": "^5.67.0",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.7.3"
+  }
+}
