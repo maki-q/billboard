@@ -19,11 +19,12 @@
   "homepage": "https://github.com/maki-q/billboard#readme",
   "dependencies": {
     "axios": "^0.25.0",
-    "billboard-top-100": "^2.5.9",
+    "billboard-crawler": "^1.0.1",
     "express": "^4.17.2",
     "pg": "^8.7.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "spotify-web-api-node": "^5.0.2",
     "styled-components": "^5.3.3"
   },
   "devDependencies": {
