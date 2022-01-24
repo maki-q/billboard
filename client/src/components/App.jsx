@@ -12,24 +12,11 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [savedIds, setSavedIds] = useState([]);
 
-  function toggleSaved(addingSong, song) {
-    if (addingSong) {
-      setSavedSongs([...savedSongs, song]);
-      setSavedIds([...savedIds, song.track.id]);
-      axios.post('/top100', { song_id: song.track.id });
-    } else {
-      setSavedSongs(savedSongs.filter((saved) => saved.track.id !== song.track.id));
-      setSavedIds(savedIds.filter((saved) => saved !== song.track.id));
-      axios.patch('/top100', { song_id: song.track.id });
-    }
-  }
-
   useEffect(() => {
     axios.get('/top100').then((res) => {
       setSavedSongs(res.data.saved);
       setSavedIds(res.data.saved.map((song) => song.track.id));
       setBillboardData(res.data.songs.tracks.items);
-      console.log(res.data.liveData);
       setLoggedIn(res.data.liveData);
     });
   }, []);
@@ -51,6 +38,18 @@ function App() {
       }
     }));
   }, [currentSort]);
+
+  function toggleSaved(addingSong, song) {
+    if (addingSong) {
+      setSavedSongs([...savedSongs, song]);
+      setSavedIds([...savedIds, song.track.id]);
+      axios.post('/top100', { song_id: song.track.id });
+    } else {
+      setSavedSongs(savedSongs.filter((saved) => saved.track.id !== song.track.id));
+      setSavedIds(savedIds.filter((saved) => saved !== song.track.id));
+      axios.patch('/top100', { song_id: song.track.id });
+    }
+  }
 
   function renderTitle(title) {
     return (
@@ -99,9 +98,9 @@ function App() {
         </caption>
       );
     }
+    return null;
   }
 
-  console.log(savedSongs);
   if (billboardData.length > 0) {
     return (
       <div className="container">
