@@ -104,5 +104,6 @@ dist/bundle.js.map
 # TernJS port file
 .tern-port
 
-/server/spotify/config.js
-/client/dist
+server/spotify/config.js
+client/dist
+server/db/schemas/config.js

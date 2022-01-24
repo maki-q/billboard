@@ -18,9 +18,6 @@ const express = require('express');
 const SpotifyWebApi = require('spotify-web-api-node');
 
 const { CLIENT_ID, CLIENT_SECRET } = require('./spotify/config.js');
-const billboardData = require('./spotify/billboard.js');
-
-const BILLBOARD_TOP_100 = '6UeSakyzhiEt4NB3UAd6NQ';
 
 const scopes = [
   'ugc-image-upload',
@@ -53,6 +50,9 @@ const spotifyApi = new SpotifyWebApi({
 const app = express();
 
 app.use(express.static('./client'));
+app.use(express.json());
+
+app.use('/top100', require('./routes/top100.js'));
 
 // Spotify oAuth setup
 
@@ -94,18 +94,6 @@ app.get('/callback', (req, res) => {
       console.error('Error getting Tokens:', error);
       res.send(`Error getting Tokens: ${error}`);
     });
-});
-
-app.get('/top100', (req, res) => {
-  // spotifyApi.getPlaylist(BILLBOARD_TOP_100)
-  //   .then((results) => {
-  //     console.log(results);
-  //     res.send(results.body);
-  //   })
-  //   .catch((err) => {
-  //     console.log(err);
-  //   });
-  res.send(billboardData);
 });
 
 app.listen(3000, () => console.log(
