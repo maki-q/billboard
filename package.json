@@ -6,7 +6,8 @@
   "scripts": {
     "react-dev": "webpack --config ./webpack.config.js -w",
     "start": "nodemon server",
-    "setup-db": "psql postgres -f server/db/schemas/schema.sql"
+    "setup-db": "psql postgres -f server/db/schemas/schema.sql",
+    "build-client": "webpack"
   },
   "repository": {
     "type": "git",
