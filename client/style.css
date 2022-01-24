@@ -23,6 +23,15 @@ a:hover, a:focus {
 .container {
   margin: 5% 3%;
 }
+
+i {
+  cursor: pointer;
+}
+
+.favorite-icon:hover {
+  color: red;
+}
+
 @media (min-width: 48em) {
   .container {
     margin: 2%;
@@ -179,7 +188,7 @@ a:hover, a:focus {
   .responsive-table tbody th[scope=row] {
     background-color: transparent;
     color: #000001;
-    text-align: left;
+    text-align: center;
   }
 }
 .responsive-table tbody td {

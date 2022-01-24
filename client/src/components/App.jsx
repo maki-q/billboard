@@ -4,6 +4,15 @@ import Song from './Song.jsx';
 
 function App() {
   const [billboardData, setBillboardData] = useState({});
+  const [savedSongs, setSavedSongs] = useState([]);
+
+  function toggleSaved(addingSong, song) {
+    if (addingSong) {
+      setSavedSongs([...savedSongs, song]);
+    } else {
+      setSavedSongs(savedSongs.filter((saved) => saved.id !== song.id));
+    }
+  }
 
   useEffect(() => {
     axios.get('/top100').then((res) => {
@@ -40,7 +49,7 @@ function App() {
             </tr>
           </tfoot>
           <tbody>
-            {billboardData.tracks.items.map((song) => <Song song={song.track} key={song.id} />)}
+            {billboardData.tracks.items.map((song) => <Song song={song.track} key={song.id} toggleSaved={toggleSaved}/>)}
           </tbody>
         </table>
       </div>
