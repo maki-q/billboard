@@ -20,8 +20,16 @@ a:hover, a:focus {
   color: #046a38;
 }
 
+th span{
+  white-space: nowrap;
+}
+
 .container {
   margin: 5% 3%;
+}
+
+.arrow {
+  display: inline;
 }
 
 i {
