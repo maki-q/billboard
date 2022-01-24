@@ -26,5 +26,6 @@ module.exports = {
     'linebreak-style': 0,
     'react/prop-types': 0,
     'func-names': 0,
+    'import/extensions': [2, 'ignorePackages'],
   },
 };

@@ -1,37 +1,45 @@
 const path = require('path');
 
-const SRC_DIR = path.join(__dirname, '/client/src');
-const DIST_DIR = path.join(__dirname, '/client/dist');
-
 module.exports = {
-  mode: 'development',
-  entry: `${SRC_DIR}/index.jsx`,
+  entry: path.join(__dirname, 'client', 'src', 'index.jsx'),
+
   output: {
-    filename: 'bundle.js',
-    path: DIST_DIR,
+    filename: '[name].bundle.js',
+    path: path.resolve(__dirname, 'client', 'dist'),
+    sourceMapFilename: '[name].js.map',
   },
+
   devtool: 'source-map',
+
+  mode: 'production',
+
+  resolve: {
+    alias: {
+      'styled-components': path.resolve(__dirname, 'node_modules', 'styled-components'),
+    },
+  },
+
   module: {
     rules: [
       {
-        test: /\.(js|jsx)?/,
+        test: [/\.js$/, /\.jsx?$/],
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: [
-              '@babel/preset-env',
-              '@babel/preset-react',
-            ],
-            plugins: [
-              ['@babel/plugin-transform-runtime',
-                {
-                  regenerator: true,
-                },
-              ],
-            ],
-          },
+        loader: 'babel-loader',
+        options: {
+          presets: ['@babel/preset-env', '@babel/preset-react'],
+          plugins: ['babel-plugin-styled-components'],
         },
+      },
+      {
+        test: /\.(png|jp(e*)g|svg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'images/[hash]-[name].[ext]',
+            },
+          },
+        ],
       },
     ],
   },
